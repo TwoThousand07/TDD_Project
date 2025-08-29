@@ -17,7 +17,7 @@ class CatalogViewTests(TestCase):
             ISBN='978-1-60309-0',
             author='John Doe',
             price=9.99,
-            availbaility=True
+            availability=True
         )
 
         Book_2 = Catalog.objects.create(
@@ -25,7 +25,7 @@ class CatalogViewTests(TestCase):
             ISBN='978-1-60309-3',
             author='Mary Doe',
             price=11.99,
-            availbaility=False
+            availability=False
         )
 
         response = self.client.get(reverse('home'))
@@ -35,7 +35,7 @@ class CatalogViewTests(TestCase):
         self.assertIn('978-1-60309-3', response.content.decode())
 
 
-class CatalogTemplateTests(SimpleTestCase):
+class CatalogTemplateTests(TestCase):
     '''Тест шаблона'''
 
     def setUp(self):
@@ -52,7 +52,7 @@ class CatalogTemplateTests(SimpleTestCase):
         self.assertNotContains(self.response, 'Hello World')
 
 
-class CatalogFormTests(SimpleTestCase):
+class CatalogFormTests(TestCase):
     '''Тесты для форм'''
 
     def setUp(self):
@@ -75,7 +75,7 @@ class CatalogFormTests(SimpleTestCase):
         self.assertFalse(add_book_form.is_valid())
 
 
-class ElibraryURLsTest(SimpleTestCase):
+class ElibraryURLsTest(TestCase):
     '''Тест URLs'''
     
     def test_homepage_url_name(self):
